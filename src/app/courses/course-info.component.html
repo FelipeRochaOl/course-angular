@@ -1,0 +1,148 @@
+<h2>Course Info</h2>
+
+<hr />
+
+<form #courseForm="ngForm" name="courseForm" *ngIf="course">
+  <div class="text-center mb-2">
+    <img [src]="course.imageUrl" [alt]="course.name" height="60" />
+  </div>
+
+  <div class="row mb-2">
+    <label class="col-2 text-center">Image</label>
+    <div class="col-10">
+      <input
+        class="form-control"
+        placeholder="Image"
+        name="imageUrl"
+        type="file"
+      />
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <label class="col-2 text-center">Code</label>
+    <div class="col-10">
+      <input
+        class="form-control"
+        placeholder="Code"
+        required
+        [(ngModel)]="course.code"
+        name="code"
+        #courseCode="ngModel"
+        [ngClass]="{'is-invalid': courseCode.invalid}"
+      />
+      <div class="invalid-feedback">
+        <span>Code is required</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <label class="col-2 text-center">Name</label>
+    <div class="col-10">
+      <input
+        class="form-control"
+        placeholder="Name"
+        required
+        [(ngModel)]="course.name"
+        name="name"
+        #courseName="ngModel"
+        [ngClass]="{'is-invalid': courseName.invalid}"
+      />
+      <div class="invalid-feedback">
+        <span>Name is required</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <label class="col-2 text-center">Description</label>
+    <div class="col-10">
+      <textarea
+        class="form-control"
+        placeholder="Description"
+        required
+        [(ngModel)]="course.description"
+        name="description"
+        #courseDescription="ngModel"
+        [ngClass]="{'is-invalid': courseDescription.invalid}"
+      ></textarea>
+      <div class="invalid-feedback">
+        <span>Description is required</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <label class="col-2 text-center">Price</label>
+    <div class="col-10">
+      <input
+        class="form-control"
+        placeholder="Price"
+        required
+        [(ngModel)]="course.price"
+        name="price"
+        #coursePrice="ngModel"
+        [ngClass]="{'is-invalid': coursePrice.invalid}"
+        type="number"
+      />
+      <div class="invalid-feedback">
+        <span>Price is required</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <label class="col-2 text-center">Duration</label>
+    <div class="col-10">
+      <input
+        class="form-control"
+        placeholder="Duration"
+        required
+        [(ngModel)]="course.duration"
+        name="duration"
+        #courseDuration="ngModel"
+        [ngClass]="{'is-invalid': courseDuration.invalid}"
+        type="number"
+      />
+      <div class="invalid-feedback">
+        <span>Duration is required</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <label class="col-2 text-center">Rating</label>
+    <div class="col-10">
+      <input
+        class="form-control"
+        placeholder="Rating"
+        required
+        [(ngModel)]="course.rating"
+        name="rating"
+        #courseRating="ngModel"
+        [ngClass]="{'is-invalid': courseRating.invalid}"
+        type="number"
+      />
+      <div class="invalid-feedback">
+        <span>Rating is required</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mb-2">
+    <button [disabled]="courseForm.invalid" (click)="save()" class="btn btn-primary">Save</button>
+    <button [routerLink]="['/']" class="btn btn-secondary">Back</button>
+  </div>
+
+  <div class="text-center mt-10 mb-10" *ngIf="success">
+    <div class="alert-danger p-2" [ngStyle]="{display: success ? 'none' : 'block'}">
+      <span>Saving error</span>
+    </div>
+
+    <div class="alert-success p-2" [ngStyle]="{display: success ? 'block' : 'none'}">
+      <span>Saving success</span>
+    </div>
+  </div>
+
+</form>
